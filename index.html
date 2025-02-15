@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>🎉Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: url('image/welcome.png');
+            background-size: cover;
+            background-position: center;
+            animation: fadeInUp 1.2s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+        .avator{
+            position: abosolute;
+            top: 20%;
+            left:50%;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            animation:fadeInUp 1.2s ease-out;
+            opacity:0;
+            animation-fill-mode:forwards;
+        }
+        .card {
+            width: 1000px;
+            height: auto;
+            padding: 2rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(3px);
+}
+        .content {
+            float:right;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            animation: contentAppear 0.8s ease-out 0.8s;
+            animation-fill-mode: backwards;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 40px;
+            border-radius: 30px;
+            font-size: 2.2em;
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 35px;
+            background: linear-gradient(135deg,#F9C401,#C69F10);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(63, 41, 0, 0.4);
+        }
+        .word {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #cecdc8;
+            text-align: center;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            max-width: 80%;
+            padding: 8px 16px;
+            border-radius: 8px;
+            backdrop-filter: blur(2px);
+            z-index: 999;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes contentAppear {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="display" class="word"></div>
+    <script>
+        const wordlist=["我仍希望再一次见到我的星星，虽然我已不再是那个追星星的人。"
+            ,"纵使我知道这即是结尾，一切的增添补改都不过是基于过往云烟的回味和修饰，故事已然走到了胶片的末端"
+            ,"雪路被撕扯的越来越长，越来越宽。","且任这一切,\n伴随着时光的引子,\n悄悄酝酿。"
+            ,"重复，像一股洪流般悄然淹没了那些或许值得回忆的小小闪光点。"
+            ,"或许未来很远，或许当下很累，或许过去存在遗憾。\n好在，我们都还年轻。"
+            ,"岁月的疤，民族的梁","魂归此城，愿山河永焕荣光。"
+            ,"几朵尘灰扬起，\n化作音符，\n在飘溢，\n又在阳光下隐匿。"]
+            let a = Math.floor(Math.random() * wordlist.length);
+            let word = wordlist[a];
+            document.getElementById('display').innerText = word;
+    </script>
+    <div class="background"></div>
+    <div class="content">
+        <div class="card">
+            <h1 style="color: goldenrod;">黄豆SoyBean</h1>
+            <p style="color: goldenrod;">🎉Welcome to Soybean's Website!🎉</p>
+        <img src= image/1.jpg class="avator">
+        <div class="tag">黄豆漂流后日谈</div>
+        <a href="home.html" class="button">开始探索</a>
+        
+    </div>
+</body>
+</html>

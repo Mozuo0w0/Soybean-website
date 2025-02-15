@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页(Home)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('image/background.png');
+            min-height: 200vh;
+            font-family: 'Microsoft Yahei', sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 2rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1600px;
+            margin: 80px auto 0;
+            padding: 0 70px;
+        }
+
+
+        .left-column {
+            flex: 1;
+            margin-right: 40px;
+        }
+
+
+        .right-column {
+            width: 600px;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            width: 100%;
+        }
+
+        .box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(63, 41, 0, 0.4);
+        }
+
+        .box.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .card-content {
+            color: white;
+        }
+        .avatar-container {
+            margin: -60px auto 20px;
+            position: relative;
+            z-index: 1;
+            width: 120px;
+            height: 120px;
+        }
+
+        .user-avatar {
+            width: 25%;
+            height: 25%;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+
+        @media (max-width: 1600px) {
+            .main-container {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            .left-column,
+            .right-column {
+                width: 100%;
+                margin-right: 0;
+            }
+            .right-column .box {
+                height: auto;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .box {
+                margin: 1rem 0;
+                padding: 1.5rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-item" >主页</div>
+        <div class="nav-item">文章</div>
+        <div class="nav-item">关于</div>
+    </nav>
+
+    <div class="main-container">
+        <div class="left-column">
+            <div class="box" style="height: 400px;">
+                <div class="card-content">
+                    <img src="image/Soybean.jpg" class="user-avatar" alt="黄豆">
+                    <img src="image/Mozuo.png" class="user-avatar" alt="Mozuo">
+                    <h2>🔥这里是黄豆的个人Blog首页！🟡</h2>
+                    <p style="font-size: 20px;">有空的话，来喝杯豆浆吧。🥛</p>
+                </div>
+            </div>
+
+            <div class="box" style="height: 200px;">
+                <div class="card-content" >
+                    <h2>最新文章</h2>
+                    <p >《被系错的纽扣》  --2025.1.27</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="box" style="height: 400px;">
+                <div class="card-content">
+                    <h2>关于我们</h2>
+                    <p>QQ:V我50解密</p>
+                    <p>VX:V我50解密</p>
+                    <p>邮箱:V我50解密</p>
+                    <p>B站:V我50解密</p>
+                    <p>Github:@Mozuo0w0</p>
+                    <img src="image/QR code.png"style="width: 250px; height: 170px;" alt="QR code">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const cards = document.querySelectorAll('.box');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const pageName = this.textContent;
+                const pages = {
+                    '主页': 'home.html',
+                    '文章': 'article.html',
+                    '关于': 'about.html'
+                };
+                if (pageName === '主页') {
+                 alert('🚫禁止原地tp  ￣へ￣');
+                }
+                if (pageName === '文章') {
+                    window.location.href = 'article.html';
+                }
+                if (pageName === '关于') {
+                    window.location.href = 'about.html';
+                }
+                
+            });
+        });
+    </script>
+</body>
+</html>
